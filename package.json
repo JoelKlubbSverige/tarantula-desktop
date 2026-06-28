@@ -24,6 +24,10 @@
       ],
       "icon": "assets/icon.icns",
       "darkModeSupport": false,
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist",
       "extendInfo": {
         "NSMicrophoneUsageDescription": "Tarantula behöver mikrofon för att spela in möten.",
         "NSScreenCaptureUsageDescription": "Tarantula behöver skärminspelning för att fånga systemljud."
