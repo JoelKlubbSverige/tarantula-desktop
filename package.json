@@ -1,0 +1,42 @@
+{
+  "name": "tarantula-desktop",
+  "version": "0.1.0",
+  "description": "Record. Transcribe. Ship issues.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "make:icon": "bash scripts/make-icns.sh",
+    "build:mac": "electron-builder --mac",
+    "pack": "electron-builder --dir"
+  },
+  "build": {
+    "appId": "se.anew.tarantula",
+    "productName": "Tarantula",
+    "files": [
+      "main.js",
+      "preload.js",
+      "assets/**"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        { "target": "dmg", "arch": ["arm64", "x64"] }
+      ],
+      "icon": "assets/icon.icns",
+      "darkModeSupport": false,
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "Tarantula behöver mikrofon för att spela in möten.",
+        "NSScreenCaptureUsageDescription": "Tarantula behöver skärminspelning för att fånga systemljud."
+      }
+    },
+    "dmg": {
+      "title": "Tarantula ${version}",
+      "background": null,
+      "window": { "width": 540, "height": 380 }
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^25.1.8"
+  }
+}
