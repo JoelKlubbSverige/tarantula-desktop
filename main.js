@@ -60,6 +60,24 @@ function createWindow() {
 
   win.loadURL(APP_URL);
 
+  // Inject a drag region at the top of the window so the user can move it.
+  // titleBarStyle "hiddenInset" hides the native title bar, so without this
+  // there is no grabbable area to reposition the window on screen.
+  win.webContents.on("did-finish-load", () => {
+    win.webContents.insertCSS(`
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 72px;
+        right: 0;
+        height: 38px;
+        -webkit-app-region: drag;
+        z-index: 2147483647;
+      }
+    `);
+  });
+
   win.once("ready-to-show", () => win.show());
 
   win.webContents.setWindowOpenHandler(({ url }) => {
